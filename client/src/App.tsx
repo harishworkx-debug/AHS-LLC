@@ -28,8 +28,8 @@ import heroImage from "./assets/ahs-hero.webp";
 import technicianImage from "./assets/ahs-technician.webp";
 import installationImage from "./assets/ahs-installation.webp";
 
-const PHONE = "352-843-3468";
-const TEL = "tel:+13528433468";
+const PHONE = "(352) 847-1377";
+const TEL = "tel:+13528471377";
 const MAP = "https://maps.app.goo.gl/9pPgTumWVu12mjkA7";
 const ADDRESS = "7 Hemlock Terrace Ln, Ocala, FL 34472";
 const hero = heroImage;
@@ -624,7 +624,7 @@ function ImageShowcase({
 function Home() {
   setMeta(
     "AHS, LLC. | Heating Contractor in Ocala, FL",
-    "AHS, LLC. provides heating, furnace, air conditioning, and HVAC service in Ocala, Florida and nearby communities. Call (352) 843-3468."
+    "AHS, LLC. provides heating, furnace, air conditioning, and HVAC service in Ocala, Florida and nearby communities. Call (352) 847-1377."
   );
   return (
     <div>
@@ -1245,7 +1245,7 @@ function Services() {
       </section>
       <CtaBand
         title="AHS, LLC. heating and HVAC services."
-        text="Review the service information or call AHS, LLC. at 352-843-3468."
+        text="Review the service information or call AHS, LLC. at (352) 847-1377."
       />
     </>
   );
@@ -1285,7 +1285,7 @@ function Detail({ slug }: { slug: string }) {
   const [path, name, desc] = item;
   setMeta(
     `${name} in Ocala, FL | AHS, LLC.`,
-    `${name} in Ocala, Florida from AHS, LLC. Call (352) 843-3468 for practical heating and HVAC service.`
+    `${name} in Ocala, Florida from AHS, LLC. Call (352) 847-1377 for practical heating and HVAC service.`
   );
   return (
     <>
@@ -1371,7 +1371,7 @@ function Area({ area, serviceName }: { area: string; serviceName?: string }) {
     services.find(s => s[1] === service)?.[0] || "hvac-repair-ocala";
   setMeta(
     `${service} in ${name}, FL | AHS, LLC.`,
-    `${service} in ${name}, Florida from AHS, LLC. Call (352) 843-3468 for local HVAC service.`
+    `${service} in ${name}, Florida from AHS, LLC. Call (352) 847-1377 for local HVAC service.`
   );
   return (
     <>
@@ -1515,7 +1515,7 @@ function About() {
 function Contact() {
   setMeta(
     "Contact AHS, LLC. | Heating Contractor in Ocala, FL",
-    "Contact AHS, LLC. for heating, furnace, AC, and HVAC service in Ocala, Florida. Call (352) 843-3468."
+    "Contact AHS, LLC. for heating, furnace, AC, and HVAC service in Ocala, Florida. Call (352) 847-1377."
   );
   return (
     <>
@@ -1616,7 +1616,7 @@ function FAQ() {
     ],
     [
       "How do I request service?",
-      "Call 352-843-3468. A team member can help you identify the right starting point for your home comfort concern.",
+      "Call (352) 847-1377. A team member can help you identify the right starting point for your home comfort concern.",
     ],
   ];
   return (
