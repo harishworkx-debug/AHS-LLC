@@ -1,5 +1,18 @@
 {
   "outputDirectory": "dist/public",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "ahsheatingair.com"
+        }
+      ],
+      "destination": "https://www.ahsheatingair.com/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

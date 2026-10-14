@@ -27,12 +27,13 @@ import "./index.css";
 import heroImage from "./assets/ahs-hero.webp";
 import technicianImage from "./assets/ahs-technician.webp";
 import installationImage from "./assets/ahs-installation.webp";
-import { getContent, LOCATIONS, SERVICES } from "./data/locationContent";
+import { getContent, getOcalaServiceContent, LOCATIONS, SERVICES } from "./data/locationContent";
+import { SITE_CONFIG } from "./siteConfig";
 
-const PHONE = "(352) 847-1377";
-const TEL = "tel:+13528471377";
-const MAP = "https://maps.app.goo.gl/9pPgTumWVu12mjkA7";
-const ADDRESS = "7 Hemlock Terrace Ln, Ocala, FL 34472";
+const PHONE = SITE_CONFIG.primaryPhone;
+const TEL = SITE_CONFIG.primaryTel;
+const MAP = SITE_CONFIG.mapsUrl;
+const ADDRESS = `${SITE_CONFIG.address.street}, ${SITE_CONFIG.address.city}, ${SITE_CONFIG.address.state} ${SITE_CONFIG.address.zip}`;
 const hero = heroImage;
 const technician = technicianImage;
 const installation = installationImage;
@@ -303,13 +304,13 @@ function setMeta(title: string, description: string, schemas?: object[]) {
   canonical.setAttribute("rel", "canonical");
   canonical.setAttribute(
     "href",
-    `https://ahsheatingair.com${window.location.pathname}`
+    `${SITE_CONFIG.canonicalDomain}${window.location.pathname}`
   );
   document.head.appendChild(canonical);
   [
     ["og:title", title],
     ["og:description", description],
-    ["og:url", `https://ahsheatingair.com${window.location.pathname}`],
+    ["og:url", `${SITE_CONFIG.canonicalDomain}${window.location.pathname}`],
   ].forEach(([property, content]) => {
     const tag =
       document.querySelector(`meta[property="${property}"]`) ||
@@ -559,38 +560,36 @@ function Layout({ children }: { children: React.ReactNode }) {
       "@graph": [
         {
           "@type": "HVACBusiness",
-          "@id": "https://ahsheatingair.com/#organization",
-          name: "AHS Heating & Air",
-          legalName: "AHS, LLC.",
-          url: "https://ahsheatingair.com/",
+          "@id": `${SITE_CONFIG.canonicalDomain}/#organization`,
+          name: SITE_CONFIG.brandName,
+          legalName: SITE_CONFIG.legalName,
+          url: `${SITE_CONFIG.canonicalDomain}/`,
           telephone: "+13528471377",
           priceRange: "$$",
-          sameAs: ["https://maps.app.goo.gl/9pPgTumWVu12mjkA7"],
+          sameAs: SITE_CONFIG.sameAs,
+          hasCredential: {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "license",
+            "name": SITE_CONFIG.licenseFull,
+            "identifier": SITE_CONFIG.license,
+          },
           address: {
             "@type": "PostalAddress",
-            streetAddress: "7 Hemlock Terrace Ln",
-            addressLocality: "Ocala",
-            addressRegion: "FL",
-            postalCode: "34472",
-            addressCountry: "US",
+            streetAddress: SITE_CONFIG.address.street,
+            addressLocality: SITE_CONFIG.address.city,
+            addressRegion: SITE_CONFIG.address.state,
+            postalCode: SITE_CONFIG.address.zip,
+            addressCountry: SITE_CONFIG.address.country,
           },
           geo: {
             "@type": "GeoCoordinates",
-            latitude: 29.17025,
-            longitude: -82.15693,
+            latitude: SITE_CONFIG.geo.latitude,
+            longitude: SITE_CONFIG.geo.longitude,
           },
           openingHoursSpecification: [
             {
               "@type": "OpeningHoursSpecification",
-              dayOfWeek: [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday",
-              ],
+              dayOfWeek: SITE_CONFIG.daysOpen,
               opens: "07:00",
               closes: "19:00",
             },
@@ -602,8 +601,8 @@ function Layout({ children }: { children: React.ReactNode }) {
           })),
           aggregateRating: {
             "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "43",
+            ratingValue: SITE_CONFIG.rating.score,
+            reviewCount: SITE_CONFIG.rating.reviewCount,
           },
         },
       ],
@@ -670,7 +669,7 @@ function ImageShowcase({
 function Home() {
   setMeta(
     "AHS Heating & Air | Top HVAC Contractor in Ocala, FL",
-    "AHS Heating & Air is a licensed HVAC contractor in Ocala, FL providing 24/7 emergency AC repair, furnace repair, heat pump service & HVAC maintenance. Call (352) 847-1377."
+    `AHS Heating & Air is a licensed HVAC contractor in Ocala, FL providing emergency AC repair, furnace repair, heat pump service & HVAC maintenance. Call ${PHONE}.`
   );
   return (
     <div>
@@ -1291,7 +1290,7 @@ function Services() {
       </section>
       <CtaBand
         title="AHS, LLC. heating and HVAC services."
-        text="Review the service information or call AHS, LLC. at (352) 847-1377."
+        text={`Review the service information or call AHS Heating & Air at ${PHONE}.`}
       />
     </>
   );
@@ -1329,75 +1328,80 @@ function PageHero({
 function Detail({ slug }: { slug: string }) {
   const item = services.find(s => s[0] === slug)!;
   const [path, name, desc] = item;
+  const srvSlug = slug.replace("-ocala", "");
+  const ocalaData = getOcalaServiceContent(srvSlug);
+  const srv = ocalaData.srv;
 
-  let metaTitle = `${name} in Ocala, FL | AHS Heating & Air`;
-  let metaDesc = `Need ${name.toLowerCase()} in Ocala, FL? AHS Heating & Air provides fast ${name.toLowerCase()}, diagnostic troubleshooting & local HVAC solutions. Call (352) 847-1377.`;
+  let metaTitle = ocalaData.title;
+  let metaDesc = ocalaData.metaDescription;
 
   if (slug === "ac-repair-ocala") {
-    metaTitle =
-      "AC Repair & Emergency AC Repair in Ocala, FL | AHS Heating & Air";
-    metaDesc =
-      "Need AC repair or 24/7 emergency AC repair in Ocala, FL? AHS Heating & Air fixes frozen coils, leaking refrigerant & cooling failures fast. Call (352) 847-1377.";
+    metaTitle = "AC Repair & Emergency AC Repair in Ocala, FL | AHS Heating & Air";
+    metaDesc = `Need AC repair or emergency AC repair in Ocala, FL? AHS Heating & Air fixes frozen coils, leaking refrigerant & cooling failures fast. Call ${PHONE}.`;
   } else if (slug === "heat-pump-service-ocala") {
-    metaTitle =
-      "Heat Pump Repair & Service in Ocala, FL | AHS Heating & Air";
-    metaDesc =
-      "Top-rated heat pump repair & service in Ocala, FL. AHS Heating & Air fixes reversing valves, defrost controls & heating coils. Call (352) 847-1377.";
+    metaTitle = "Heat Pump Repair & Service in Ocala, FL | AHS Heating & Air";
+    metaDesc = `Top-rated heat pump repair & service in Ocala, FL. AHS Heating & Air fixes reversing valves, defrost controls & heating coils. Call ${PHONE}.`;
   } else if (slug === "hvac-repair-ocala") {
     metaTitle = "HVAC Repair & Service in Ocala, FL | AHS Heating & Air";
-    metaDesc =
-      "Reliable HVAC repair in Ocala, FL. AHS Heating & Air fixes AC units, furnaces & heat pumps. Call (352) 847-1377 for prompt diagnostic service.";
+    metaDesc = `Reliable HVAC repair in Ocala, FL. AHS Heating & Air fixes AC units, furnaces & heat pumps. Call ${PHONE} for prompt diagnostic service.`;
   } else if (slug === "ac-installation-ocala") {
-    metaTitle =
-      "AC Installation & Replacement in Ocala, FL | AHS Heating & Air";
-    metaDesc =
-      "High-efficiency AC installation & system replacement in Ocala, FL. Custom sizing, SEER2 energy savings & quiet cooling. Call (352) 847-1377.";
+    metaTitle = "AC Installation & Replacement in Ocala, FL | AHS Heating & Air";
+    metaDesc = `High-efficiency AC installation & system replacement in Ocala, FL. Custom sizing, SEER2 energy savings & quiet cooling. Call ${PHONE}.`;
   } else if (slug === "furnace-repair-ocala") {
     metaTitle = "Furnace Repair in Ocala, FL | AHS Heating & Air";
-    metaDesc =
-      "Trusted gas & electric furnace repair in Ocala, FL. AHS Heating & Air fixes ignition issues, flame sensors & blower motors. Call (352) 847-1377.";
+    metaDesc = `Trusted gas & electric furnace repair in Ocala, FL. AHS Heating & Air fixes ignition issues, flame sensors & blower motors. Call ${PHONE}.`;
   } else if (slug === "hvac-maintenance-ocala") {
     metaTitle = "HVAC Maintenance & Tune-Up in Ocala, FL | AHS Heating & Air";
-    metaDesc =
-      "Preventative HVAC maintenance & AC tune-ups in Ocala, FL. Clean coils, flush drain lines & optimize efficiency with AHS Heating & Air. Call (352) 847-1377.";
+    metaDesc = `Preventative HVAC maintenance & AC tune-ups in Ocala, FL. Clean coils, flush drain lines & optimize efficiency with AHS Heating & Air. Call ${PHONE}.`;
   }
 
-  setMeta(metaTitle, metaDesc);
+  setMeta(metaTitle, metaDesc, [
+    ocalaData.serviceSchema,
+    ocalaData.breadcrumbSchema,
+  ]);
+
   return (
     <>
       <PageHero
         eyebrow="AHS, LLC. · Ocala, FL"
         title={`${name} in Ocala, Florida`}
-        text={desc}
+        text={srv.tagline}
         image={path.includes("installation") ? installation : technician}
       />
       <section className="section">
         <div className="container detail-grid">
           <article>
             <span className="eyebrow">Service overview</span>
-            <h2>Comfort support that starts with understanding the problem.</h2>
+            <h2>{name} Solutions for Ocala Homeowners</h2>
             <p>
-              When your heating or cooling system is not behaving as it should,
-              the most useful first step is a focused look at the symptoms. AHS,
-              LLC. helps homeowners in Ocala understand what may be happening
-              and what options are worth considering for their home.
+              When your heating or cooling system is not performing properly in Marion County,
+              you need straight answers and dependable workmanship. At AHS Heating &amp; Air,
+              our Florida-licensed technicians (CAC1817865) bring over 28 years of trusted experience
+              to {name.toLowerCase()} in Ocala and surrounding communities.
             </p>
             <p>
-              We keep the conversation practical—whether you need a repair, a
-              system check, maintenance, or guidance on a replacement. Contact
-              AHS, LLC. for service availability and scheduling.
+              {srv.primaryFocus} We do not rely on aggressive sales tactics or generic template diagnoses.
+              Instead, we test system components thoroughly, explain our findings in clear language,
+              and deliver long-lasting comfort solutions tailored to your home.
             </p>
-            <h3>What this service can help with</h3>
+
+            <h3>What to Expect During Your {name} Service</h3>
+            <div className="process-grid" style={{ marginTop: "16px", marginBottom: "32px" }}>
+              {srv.processSteps.map((step, idx) => (
+                <div className="process-card" key={idx}>
+                  <span>0{idx + 1}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <h3>Common Warning Signs &amp; Symptoms</h3>
             <ul className="check-list">
-              {[
-                "Unusual noises, smells, or cycling",
-                "Rooms that feel too warm or too cool",
-                "Airflow, thermostat, or comfort concerns",
-                "A system that is not starting or keeping up",
-              ].map(x => (
-                <li key={x}>
+              {srv.problemTemplates.map((p, idx) => (
+                <li key={idx}>
                   <Check />
-                  {x}
+                  <span><strong>{p.title}:</strong> {p.desc}</span>
                 </li>
               ))}
             </ul>
@@ -1406,12 +1410,12 @@ function Detail({ slug }: { slug: string }) {
             <div className="service-icon">
               <Thermometer />
             </div>
-            <h3>Talk with the team</h3>
-            <p>
-              Share what you are noticing and get a clear next step for your
-              Ocala home.
-            </p>
+            <h3>Serving Ocala &amp; Marion County</h3>
+            <p>{srv.sidebarPromise}</p>
             <CallButton>Call {PHONE}</CallButton>
+            <Link className="side-link" href="/service-areas">
+              View nearby service areas <ArrowUpRight size={14} />
+            </Link>
           </aside>
         </div>
       </section>
@@ -1539,11 +1543,10 @@ function Area({
             <MapPin className="aside-pin" />
             <h3>Serving {content.location.name}</h3>
             <p>
-              Need fast {content.service.name.toLowerCase()} in{" "}
-              {content.location.name}? Contact AHS Heating & Air for honest
-              diagnostic guidance and durable repairs.
+              Need professional {content.service.name.toLowerCase()} in{" "}
+              {content.location.name}? {content.service.sidebarPromise}
             </p>
-            <CallButton>Call (352) 847-1377</CallButton>
+            <CallButton>Call {PHONE}</CallButton>
             <Link className="side-link" href={`/${mainOcalaSlug}`}>
               See {content.service.name} in Ocala <ArrowUpRight size={14} />
             </Link>
@@ -1697,7 +1700,7 @@ function Area({
 
       <CtaBand
         title={`Ready for Expert ${content.service.name} in ${content.location.name}?`}
-        text={`Call AHS Heating & Air today at (352) 847-1377 for prompt, reliable service in ${content.location.name}, FL.`}
+        text={`Call AHS Heating & Air today at ${PHONE} for prompt, reliable service in ${content.location.name}, FL.`}
       />
     </>
   );
@@ -1771,23 +1774,23 @@ function About() {
 }
 function Contact() {
   setMeta(
-    "Contact AHS, LLC. | Heating Contractor in Ocala, FL",
-    "Contact AHS, LLC. for heating, furnace, AC, and HVAC service in Ocala, Florida. Call (352) 847-1377."
+    "Contact AHS Heating & Air | Ocala HVAC Contractor",
+    `Contact AHS Heating & Air for heating, furnace, AC, and HVAC service in Ocala, Florida. Call ${PHONE}.`
   );
   return (
     <>
       <PageHero
         eyebrow="Contact"
         title="Let's get your home comfortable again."
-        text="Contact AHS, LLC. for repair, replacement, maintenance, and HVAC service information in the Ocala area."
+        text="Contact AHS Heating & Air for repair, replacement, maintenance, and HVAC service in the Ocala area."
       />
       <section className="section">
         <div className="container contact-grid">
           <div>
             <SectionTitle
-              eyebrow="Call AHS, LLC."
-              title="Contact information for AHS, LLC."
-              text="AHS, LLC. provides repair, replacement, maintenance, and comfort services for residential and commercial systems."
+              eyebrow="Call AHS Heating & Air"
+              title="Contact information for AHS Heating & Air"
+              text="AHS Heating & Air provides repair, replacement, maintenance, and comfort services for residential and commercial systems."
             />
             <CallButton>Call {PHONE}</CallButton>
             <div className="contact-details">
@@ -1808,7 +1811,7 @@ function Contact() {
               <div>
                 <Clock3 />
                 <span>
-                  <strong>Hours shown on Google</strong>7:00 AM–7:00 PM
+                  <strong>Hours shown on Google</strong>7:00 AM–7:00 PM (Daily)
                 </span>
               </div>
               <div>
@@ -1914,7 +1917,7 @@ function FAQ() {
         <Link href="/furnace-repair-ocala" className="text-link">
           Furnace Repair
         </Link>{" "}
-        services, or call (352) 847-1377 for prompt diagnostic help.
+        services, or call {PHONE} for prompt diagnostic help.
       </span>,
     ],
     [
@@ -1953,7 +1956,7 @@ function FAQ() {
     [
       "How do I request service?",
       <span>
-        Call (352) 847-1377 or visit our{" "}
+        Call {PHONE} or visit our{" "}
         <Link href="/contact" className="text-link">
           Contact page
         </Link>
@@ -1984,7 +1987,7 @@ function FAQ() {
       </section>
       <CtaBand
         title="Still have a question?"
-        text="Call AHS Heating & Air at (352) 847-1377 to talk with our HVAC team."
+        text={`Call AHS Heating & Air at ${PHONE} to talk with our HVAC team.`}
       />
     </>
   );

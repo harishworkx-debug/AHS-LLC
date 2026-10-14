@@ -1,3 +1,5 @@
+import { SITE_CONFIG } from "../siteConfig";
+
 export interface LocationInfo {
   name: string;
   slug: string;
@@ -6,7 +8,7 @@ export interface LocationInfo {
   environment: string;
   homeTypes: string;
   climateFactors: string;
-  landmarks: string[];
+  landmarks: string;
   commonHVACChallenges: string[];
 }
 
@@ -17,6 +19,7 @@ export interface ServiceInfo {
   category: "cooling" | "heating" | "general" | "comfort";
   tagline: string;
   primaryFocus: string;
+  sidebarPromise: string;
   processSteps: { title: string; desc: string }[];
   problemTemplates: { title: string; desc: string }[];
 }
@@ -192,6 +195,7 @@ export const SERVICES: Record<string, ServiceInfo> = {
     category: "cooling",
     tagline: "Fast air conditioner repair and AC troubleshooting when your system is AC not cooling or blowing warm air.",
     primaryFocus: "Air conditioner repair, AC troubleshooting, emergency AC repair, fixing AC not cooling issues, and restoring frozen coils.",
+    sidebarPromise: "Contact AHS Heating & Air for honest diagnostic troubleshooting, upfront pricing, and durable air conditioner repairs.",
     processSteps: [
       { title: "AC Troubleshooting Inspection", desc: "We perform complete AC troubleshooting, testing electrical controls, measuring refrigerant pressures, and locating why your AC is not cooling." },
       { title: "Transparent Air Conditioner Repair Options", desc: "Our technician explains what broke, why your air conditioner is blowing warm air, and the exact upfront repair price before work begins." },
@@ -212,6 +216,7 @@ export const SERVICES: Record<string, ServiceInfo> = {
     category: "cooling",
     tagline: "New AC installation and AC replacement custom-sized for high-efficiency central air performance.",
     primaryFocus: "Designing central air installation projects, seamless AC replacement, and installing high-efficiency SEER2 cooling systems.",
+    sidebarPromise: "Contact AHS Heating & Air for accurate cooling load calculations, top-brand high-efficiency systems, and clean professional AC installation.",
     processSteps: [
       { title: "Manual J Load Calculation", desc: "We evaluate home square footage, insulation level, and duct layout to size your new AC installation accurately." },
       { title: "System Selection for AC Replacement", desc: "We help you select high-efficiency split systems, central air installation options, or variable-speed heat pumps matching your budget." },
@@ -232,6 +237,7 @@ export const SERVICES: Record<string, ServiceInfo> = {
     category: "heating",
     tagline: "Dependable heating repair for furnaces, heat pumps, and electric air handlers during Florida cold snaps.",
     primaryFocus: "Restoring warm air quickly when winter freezes strike, heating repair, furnace troubleshooting, and heat pump repair.",
+    sidebarPromise: "Contact AHS Heating & Air for prompt heating diagnostics, safety checks, and reliable winter warmth restoration.",
     processSteps: [
       { title: "Heating Safety & Diagnostic Check", desc: "We inspect heat exchangers, heating strip sequencers, igniters, and safety limit switches for safe operation." },
       { title: "Clear Heating Repair Options", desc: "We explain the precise component failure and provide straightforward heating repair options to restore warmth." },
@@ -252,6 +258,7 @@ export const SERVICES: Record<string, ServiceInfo> = {
     category: "heating",
     tagline: "Expert gas and electric furnace repair to guarantee safe, reliable winter heating.",
     primaryFocus: "Fixing gas valves, igniters, flame sensors, blower motors, and furnace repair safety controls.",
+    sidebarPromise: "Contact AHS Heating & Air for certified gas and electric furnace troubleshooting, flame sensor repairs, and safe winter heating.",
     processSteps: [
       { title: "Furnace Safety & Combustion Check", desc: "We test gas pressure, inspect heat exchangers for cracks, and check flue ventilation for safe exhaust clearance." },
       { title: "Ignition & Electrical Testing", desc: "We diagnose hot surface igniters, flame rods, control boards, and pressure switches for furnace repair." },
@@ -272,6 +279,7 @@ export const SERVICES: Record<string, ServiceInfo> = {
     category: "heating",
     tagline: "Precision gas and electric furnace replacement built for long-lasting winter comfort and peak energy efficiency.",
     primaryFocus: "Sizing and installing modern high-AFUE furnaces and electric air handlers with optimal venting and safety controls.",
+    sidebarPromise: "Contact AHS Heating & Air for proper BTUH heating capacity sizing, flue venting safety compliance, and energy-efficient furnace replacement.",
     processSteps: [
       { title: "Heating Capacity Assessment", desc: "We perform precise BTUH heating load calculations based on home square footage and insulation quality." },
       { title: "Venting & Fuel Line Inspection", desc: "We inspect gas piping, electrical service, and flue pipe routing to ensure complete code compliance." },
@@ -292,6 +300,7 @@ export const SERVICES: Record<string, ServiceInfo> = {
     category: "general",
     tagline: "Complete heating and air conditioning repair for all major brands, models, and system types.",
     primaryFocus: "Comprehensive troubleshooting across all electrical, mechanical, airflow, and refrigerant systems for total year-round comfort.",
+    sidebarPromise: "Contact AHS Heating & Air for total heating and cooling diagnostics, upfront options, and dependable system repair.",
     processSteps: [
       { title: "Total System Diagnostics", desc: "We check indoor and outdoor electrical components, fan motors, coils, duct static pressure, and thermostat signals." },
       { title: "Clear Technical Diagnosis", desc: "We break down system issues in plain language and provide upfront pricing on all repair options." },
@@ -312,6 +321,7 @@ export const SERVICES: Record<string, ServiceInfo> = {
     category: "cooling",
     tagline: "Expert heat pump repair, heat pump troubleshooting, maintenance, and replacement for year-round comfort.",
     primaryFocus: "Heat pump troubleshooting, reversing valve replacement, defrost board logic, and auxiliary heat strip repair.",
+    sidebarPromise: "Contact AHS Heating & Air for expert heat pump diagnostics, reversing valve service, and year-round energy efficiency.",
     processSteps: [
       { title: "Heat Pump Troubleshooting & Dual-Mode Testing", desc: "We perform heat pump troubleshooting, testing reversing valve operation, defrost control board logic, and auxiliary heat strip engagement." },
       { title: "Refrigerant & Coil Analysis", desc: "We check subcooling/superheat in both heating and cooling modes and clean variable-speed coils." },
@@ -332,6 +342,7 @@ export const SERVICES: Record<string, ServiceInfo> = {
     category: "general",
     tagline: "Seasonal AC maintenance, AC tune-ups, and HVAC preventive maintenance for lower energy bills and fewer repairs.",
     primaryFocus: "Seasonal AC maintenance, thorough AC tune-up services, HVAC preventive maintenance, coil cleaning, and drain flushing.",
+    sidebarPromise: "Contact AHS Heating & Air for comprehensive multi-point AC tune-ups, algaecide drain flushing, and seasonal preventative care.",
     processSteps: [
       { title: "AC Tune-Up & Multi-Point Inspection", desc: "We perform a complete AC tune-up, testing capacitors, contactors, fan motors, wiring connections, coils, drain lines, and air filters." },
       { title: "Deep Cleaning & Seasonal AC Maintenance", desc: "We flush condensate lines with algaecide treatment, wash outdoor coil fins, and clear electrical cabinets as part of seasonal AC maintenance." },
@@ -352,6 +363,7 @@ export const SERVICES: Record<string, ServiceInfo> = {
     category: "comfort",
     tagline: "Professional smart thermostat installation, replacement, and troubleshooting for precise climate control.",
     primaryFocus: "Installing and configuring Wi-Fi smart thermostats (Nest, Ecobee, Honeywell), setting C-wires, and matching system multi-stage controls.",
+    sidebarPromise: "Contact AHS Heating & Air for professional Wi-Fi smart thermostat installation, multi-stage wiring, and seamless digital control setup.",
     processSteps: [
       { title: "Wiring & Compatibility Check", desc: "We check R, C, W, Y, G, and O/B terminal wiring to confirm 24V transformer and multi-stage support." },
       { title: "Precision Mounting & Wiring", desc: "We connect new thermostat baseplates, add wire relays or transformer adapters if needed, and level the display." },
@@ -372,6 +384,7 @@ export const SERVICES: Record<string, ServiceInfo> = {
     category: "comfort",
     tagline: "Whole-home indoor air quality solutions, filtration, and moisture control for a cleaner, healthier Florida home.",
     primaryFocus: "Installing UV air purifiers, high-MERV media filters, whole-home dehumidifiers, and clearing airborne contaminants.",
+    sidebarPromise: "Contact AHS Heating & Air for whole-home dehumidification, hospital-grade air filtration, and cleaner indoor air solutions.",
     processSteps: [
       { title: "Air Quality Assessment", desc: "We evaluate indoor humidity levels, dust accumulation, duct cleanliness, and air filter restriction." },
       { title: "Custom Solution Design", desc: "We recommend whole-house dehumidifiers, UV-C germicidal lights, or high-efficiency MERV 11-13 air cleaners." },
@@ -392,7 +405,7 @@ export function getContent(areaSlug: string, serviceSlug: string) {
   const srv = SERVICES[serviceSlug] || SERVICES["ac-repair"];
 
   const title = `${srv.name} in ${loc.name}, FL | AHS Heating & Air`;
-  const metaDescription = `Need expert ${srv.name.toLowerCase()} in ${loc.name}, FL? AHS Heating & Air provides fast ${srv.name.toLowerCase()}, diagnostic troubleshooting, and local HVAC solutions near ${loc.landmarks.split(',')[0]}. Call (352) 847-1377.`;
+  const metaDescription = `Need expert ${srv.name.toLowerCase()} in ${loc.name}, FL? AHS Heating & Air provides fast ${srv.name.toLowerCase()}, diagnostic troubleshooting, and local HVAC solutions near ${loc.landmarks.split(',')[0]}. Call ${SITE_CONFIG.activeDisplayPhone}.`;
 
   // Deeply localized intro paragraph 1 referencing landmarks and exact home construction
   const introParagraph1 = `When you need reliable ${srv.name.toLowerCase()} in ${loc.name}, Florida, having a trustworthy local HVAC contractor makes all the difference. ${loc.environment} Homeowners residing near ${loc.landmarks} often experience unique heating and cooling demands due to local microclimates. Whether your home is a ${loc.homeTypes.toLowerCase()}, maintaining precise indoor temperature and humidity control is critical throughout the year in ${loc.county}.`;
@@ -411,7 +424,7 @@ export function getContent(areaSlug: string, serviceSlug: string) {
   const faqs = [
     {
       q: `How quickly can AHS Heating & Air arrive for ${srv.name.toLowerCase()} in ${loc.name}?`,
-      a: `We provide rapid local dispatch to all neighborhoods in ${loc.name}, including properties near ${loc.landmarks}. Because our service vans are stationed throughout Marion County with full diagnostic tools and truck-stocked OEM parts, we strive to resolve urgent ${srv.name.toLowerCase()} requests on the same day.`
+      a: `We provide rapid local dispatch to all neighborhoods in ${loc.name}, including properties near ${loc.landmarks}. Because our service vans are stationed throughout Marion County with full diagnostic tools and truck-stocked OEM parts, we strive to resolve urgent ${srv.name.toLowerCase()} requests promptly.`
     },
     {
       q: `Why do homes in ${loc.name} frequently experience ${srv.name.toLowerCase()} issues?`,
@@ -430,16 +443,17 @@ export function getContent(areaSlug: string, serviceSlug: string) {
     "serviceType": srv.name,
     "provider": {
       "@type": "HVACBusiness",
-      "name": "AHS Heating & Air",
-      "telephone": "+1-352-847-1377",
-      "url": "https://ahsheatingair.com/",
+      "name": SITE_CONFIG.brandName,
+      "legalName": SITE_CONFIG.legalName,
+      "telephone": "+13528471377",
+      "url": `${SITE_CONFIG.canonicalDomain}/`,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "7 Hemlock Terrace Ln",
-        "addressLocality": "Ocala",
-        "addressRegion": "FL",
-        "postalCode": "34472",
-        "addressCountry": "US"
+        "streetAddress": SITE_CONFIG.address.street,
+        "addressLocality": SITE_CONFIG.address.city,
+        "addressRegion": SITE_CONFIG.address.state,
+        "postalCode": SITE_CONFIG.address.zip,
+        "addressCountry": SITE_CONFIG.address.country
       }
     },
     "areaServed": {
@@ -471,19 +485,19 @@ export function getContent(areaSlug: string, serviceSlug: string) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://ahsheatingair.com/"
+        "item": `${SITE_CONFIG.canonicalDomain}/`
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": `${srv.name} in Ocala`,
-        "item": `https://ahsheatingair.com/${srv.slug}-ocala`
+        "item": `${SITE_CONFIG.canonicalDomain}/${srv.slug}-ocala`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": `${srv.name} in ${loc.name}`,
-        "item": `https://ahsheatingair.com/${srv.slug}-${loc.slug}`
+        "item": `${SITE_CONFIG.canonicalDomain}/${srv.slug}-${loc.slug}`
       }
     ]
   };
@@ -501,6 +515,73 @@ export function getContent(areaSlug: string, serviceSlug: string) {
     faqs,
     serviceSchema,
     faqSchema,
+    breadcrumbSchema
+  };
+}
+
+export function getOcalaServiceContent(serviceSlug: string) {
+  const srv = SERVICES[serviceSlug] || SERVICES["ac-repair"];
+  const title = `${srv.name} in Ocala, FL | AHS Heating & Air`;
+  const metaDescription = `Need expert ${srv.name.toLowerCase()} in Ocala, FL? AHS Heating & Air provides licensed ${srv.name.toLowerCase()}, upfront pricing, and fast local HVAC service. Call ${SITE_CONFIG.activeDisplayPhone}.`;
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": `${srv.name} in Ocala, FL`,
+    "serviceType": srv.name,
+    "provider": {
+      "@type": "HVACBusiness",
+      "name": SITE_CONFIG.brandName,
+      "legalName": SITE_CONFIG.legalName,
+      "telephone": "+13528471377",
+      "url": `${SITE_CONFIG.canonicalDomain}/`,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": SITE_CONFIG.address.street,
+        "addressLocality": SITE_CONFIG.address.city,
+        "addressRegion": SITE_CONFIG.address.state,
+        "postalCode": SITE_CONFIG.address.zip,
+        "addressCountry": SITE_CONFIG.address.country
+      }
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Ocala",
+      "addressRegion": "FL"
+    },
+    "description": metaDescription
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": `${SITE_CONFIG.canonicalDomain}/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": `${SITE_CONFIG.canonicalDomain}/services`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": `${srv.name} in Ocala`,
+        "item": `${SITE_CONFIG.canonicalDomain}/${srv.slug}-ocala`
+      }
+    ]
+  };
+
+  return {
+    srv,
+    title,
+    metaDescription,
+    serviceSchema,
     breadcrumbSchema
   };
 }
