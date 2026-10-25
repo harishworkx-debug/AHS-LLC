@@ -174,15 +174,15 @@ export const LOCATIONS: Record<string, LocationInfo> = {
     slug: "ocala-estates",
     county: "Marion County",
     zipCodes: ["34475", "34482"],
-    environment: "Established residential enclave in northwest Ocala known for large residential lots, shade trees, and proximity to horse venues.",
-    homeTypes: "Established single-family homes, ranch estates, brick residences, and updated modern properties.",
-    climateFactors: "Heavy shade canopy slowing exterior drying, leaf litter clogging units, and long cooling seasons.",
-    landmarks: "World Equestrian Center vicinity, NW 27th Ave corridor, Ocala Estates Park",
+    environment: "Established residential community in Northwest Ocala located along the NW 27th Avenue and US-27 corridors, minutes from the World Equestrian Center.",
+    homeTypes: "Established single-family homes, classic brick ranches, and country residential properties.",
+    climateFactors: "Extended Florida summer cooling loads, high ambient humidity, afternoon thunderstorm electrical surges, and seasonal oak tree pollen.",
+    landmarks: "NW 27th Ave corridor, US-27, and the World Equestrian Center area",
     commonHVACChallenges: [
-      "Debris buildup in outdoor unit tops under mature oak canopy",
-      "Aging duct system air leakage in unconditioned crawlspaces or attics",
-      "Thermostat miscommunication with multi-stage cooling equipment",
-      "Uneven airflow to addition rooms or bonus space over garages"
+      "Heavy oak pollen and falling leaf debris settling inside outdoor condenser coils",
+      "Capacitor and contactor failures caused by frequent thunderstorm voltage spikes",
+      "Condensate drain line algae clogs from continuous Florida summer humidity",
+      "Aging attic ductwork connections leaking cooled air into unconditioned spaces"
     ]
   }
 };
@@ -193,20 +193,20 @@ export const SERVICES: Record<string, ServiceInfo> = {
     slug: "ac-repair",
     actionWord: "repair",
     category: "cooling",
-    tagline: "Fast air conditioner repair and AC troubleshooting when your system is AC not cooling or blowing warm air.",
-    primaryFocus: "Air conditioner repair, AC troubleshooting, emergency AC repair, fixing AC not cooling issues, and restoring frozen coils.",
+    tagline: "Fast, honest air conditioner repair and diagnostic troubleshooting when your AC blows warm air, freezes up, or refuses to start.",
+    primaryFocus: "Accurate electrical diagnostics, capacitor and fan motor replacements, refrigerant leak detection, frozen coil troubleshooting, and restoring reliable cooling.",
     sidebarPromise: "Contact AHS Heating & Air for honest diagnostic troubleshooting, upfront pricing, and durable air conditioner repairs.",
     processSteps: [
-      { title: "AC Troubleshooting Inspection", desc: "We perform complete AC troubleshooting, testing electrical controls, measuring refrigerant pressures, and locating why your AC is not cooling." },
-      { title: "Transparent Air Conditioner Repair Options", desc: "Our technician explains what broke, why your air conditioner is blowing warm air, and the exact upfront repair price before work begins." },
-      { title: "Precision Component Repair", desc: "We perform fast air conditioner repair, replacing failed capacitors, fan motors, contactors, or sealing refrigerant leaks using OEM parts." },
-      { title: "Cooling Performance Verification", desc: "We verify supply air temperature drop, airflow velocity, and thermostat calibration to ensure steady cooling." }
+      { title: "Complete Electrical & Mechanical Diagnostics", desc: "Our technician inspects contactors, tests dual-run capacitors, measures compressor amp draw, and tests safety float switches." },
+      { title: "Refrigerant & Airflow Performance Evaluation", desc: "We evaluate static pressure, check superheat and subcooling levels, and identify refrigerant leaks or restricted air filters." },
+      { title: "Clear Diagnosis & Upfront Repair Options", desc: "We explain exactly what component failed, why it occurred, and provide a clear, flat-rate repair quote before performing any work." },
+      { title: "Precision Repair & System Verification", desc: "We install OEM-grade replacement parts, clear condensate drain lines, and measure supply-to-return temperature split to confirm steady cooling." }
     ],
     problemTemplates: [
-      { title: "AC Blowing Warm Air From Vents", desc: "When your AC runs continuously but warm or tepid air comes out, it signals a failed capacitor, low refrigerant, or compressor overload." },
-      { title: "AC Not Cooling & Frozen Evaporator Coil", desc: "Ice buildup on indoor copper lines or air handler coils restricts airflow and prevents your air conditioner from cooling effectively." },
-      { title: "Short Cycling & Breaker Tripping", desc: "An AC unit that trips breakers or short-cycles on and off every few minutes is experiencing electrical overheating or component failure." },
-      { title: "Water Leaking Around Indoor Unit", desc: "Clogged condensate drain lines or cracked drain pans lead to standing water damage around your indoor air handler." }
+      { title: "AC Blowing Warm or Tepid Air", desc: "When your outdoor unit runs but vents blow warm air, a failed capacitor, seized fan motor, or low refrigerant is usually the culprit." },
+      { title: "Frozen Evaporator Coils & Iced Lines", desc: "Restricted airflow from clogged filters, a failing blower motor, or refrigerant leaks can cause coils to ice up and halt cooling." },
+      { title: "Repeated Breaker Tripping or Short Cycling", desc: "An AC system that shuts off after running for only 2-3 minutes indicates electrical overheating, a failing compressor, or high head pressure." },
+      { title: "Water Backing Up in Drain Pan", desc: "Florida's humid climate produces gallons of condensate daily; clogged lines cause water to trip safety float switches and shut the AC down." }
     ]
   },
   "ac-installation": {
@@ -214,20 +214,20 @@ export const SERVICES: Record<string, ServiceInfo> = {
     slug: "ac-installation",
     actionWord: "install",
     category: "cooling",
-    tagline: "New AC installation and AC replacement custom-sized for high-efficiency central air performance.",
-    primaryFocus: "Designing central air installation projects, seamless AC replacement, and installing high-efficiency SEER2 cooling systems.",
+    tagline: "High-efficiency AC installation and system replacement custom-sized for Central Florida homes and long-term energy savings.",
+    primaryFocus: "Manual J cooling load sizing, SEER2 high-efficiency equipment selection, ductwork evaluation, and clean, code-compliant system replacement.",
     sidebarPromise: "Contact AHS Heating & Air for accurate cooling load calculations, top-brand high-efficiency systems, and clean professional AC installation.",
     processSteps: [
-      { title: "Manual J Load Calculation", desc: "We evaluate home square footage, insulation level, and duct layout to size your new AC installation accurately." },
-      { title: "System Selection for AC Replacement", desc: "We help you select high-efficiency split systems, central air installation options, or variable-speed heat pumps matching your budget." },
-      { title: "Professional Central Air Installation", desc: "Our licensed technicians set condenser pads, perform nitrogen purge welding on linesets, and complete seamless new AC installation." },
-      { title: "Performance Commissioning", desc: "We test static pressure, superheat, subcooling, and airflow CFM to ensure your AC replacement operates at factory efficiency." }
+      { title: "Manual J Load Calculation & Sizing", desc: "We measure your home's square footage, window exposure, insulation levels, and duct configuration to determine the exact cooling capacity required." },
+      { title: "Equipment & Efficiency Selection", desc: "We help you select high-efficiency split systems, variable-speed heat pumps, or packaged units matching Florida SEER2 standards and your budget." },
+      { title: "Code-Compliant Professional Installation", desc: "Our licensed technicians set hurricane-rated condenser pads, braze copper linesets under nitrogen purge, and wire safety controls." },
+      { title: "Airflow Balancing & Final Commissioning", desc: "We test duct static pressure, verify refrigerant charge via subcooling/superheat, and test thermostat programming for optimal dehumidification." }
     ],
     problemTemplates: [
-      { title: "Aging System Over 10-12 Years", desc: "Older Florida AC units suffer from severe efficiency loss, rusted coils, and expensive refrigerant leak repair costs." },
-      { title: "Soaring Summer Electric Bills", desc: "Inefficient cooling systems run non-stop without reaching setpoint, making a new AC installation the smarter financial choice." },
-      { title: "Uneven Room Temperatures", desc: "Improperly sized or worn-out units struggle to push cool air evenly, signalling it is time for an AC replacement." },
-      { title: "Frequent Costly Breakdown History", desc: "When repair quotes start approaching half the cost of a new central air installation, replacement restores complete peace of mind." }
+      { title: "Equipment Over 10 to 12 Years Old", desc: "Florida AC systems operate thousands of hours annually; older systems experience severe efficiency loss and frequent costly breakdowns." },
+      { title: "Rising Summer Electric Utility Bills", desc: "Older, degraded systems run continuously without reaching thermostat setpoints, wasting electricity compared to modern high-efficiency SEER2 units." },
+      { title: "Major Compressor Failure or R-22 Freon Leaks", desc: "When facing major compressor burnout or leaks in phased-out R-22 systems, replacement provides dependable peace of mind." },
+      { title: "Uneven Temperatures & Poor Humidity Control", desc: "Improperly sized original units leave rooms clammy and warm; properly sized equipment restores balanced whole-home comfort." }
     ]
   },
   "heating-repair": {
@@ -235,20 +235,20 @@ export const SERVICES: Record<string, ServiceInfo> = {
     slug: "heating-repair",
     actionWord: "repair",
     category: "heating",
-    tagline: "Dependable heating repair for furnaces, heat pumps, and electric air handlers during Florida cold snaps.",
-    primaryFocus: "Restoring warm air quickly when winter freezes strike, heating repair, furnace troubleshooting, and heat pump repair.",
+    tagline: "Dependable heating repair for heat pumps, electric air handlers, and furnaces during sudden Central Florida winter cold snaps.",
+    primaryFocus: "Rapid heating diagnostics, electric auxiliary heat strip repair, sequencer troubleshooting, thermostat heating logic, and safety limit controls.",
     sidebarPromise: "Contact AHS Heating & Air for prompt heating diagnostics, safety checks, and reliable winter warmth restoration.",
     processSteps: [
-      { title: "Heating Safety & Diagnostic Check", desc: "We inspect heat exchangers, heating strip sequencers, igniters, and safety limit switches for safe operation." },
-      { title: "Clear Heating Repair Options", desc: "We explain the precise component failure and provide straightforward heating repair options to restore warmth." },
-      { title: "Targeted Component Replacement", desc: "Faulty heat strips, relays, igniters, flame sensors, or thermostats are replaced with precision." },
-      { title: "Thermal Performance Test", desc: "We test supply air temperature rise and verify safety limit controls operate properly." }
+      { title: "Heating Safety & Control Inspection", desc: "We inspect electric heating sequencers, check resistance on heat strips, and test safety high-limit switches." },
+      { title: "Clear Component Diagnosis", desc: "We test thermostats, relays, and emergency heat controls, explaining clearly why your system is blowing cold air." },
+      { title: "Targeted Component Replacement", desc: "Faulty heat sequencers, thermal cutoffs, contactors, or reversing valve solenoids are repaired using quality parts." },
+      { title: "Thermal Rise & Performance Test", desc: "We measure supply air temperature rise and verify that heating cycles engage and disengage safely." }
     ],
     problemTemplates: [
-      { title: "System Blowing Cold Air in Heat Mode", desc: "Heat pumps locked in defrost mode or electric air handlers with burnt-out heating sequencers will blow chilly air." },
-      { title: "Unusual Burning Smell or Noises", desc: "While initial seasonal dust burn-off is normal, persistent burning odor, rattling, or squealing requires professional heating repair." },
-      { title: "Heater Will Not Turn On", desc: "Failed thermostats, blown fuses, open limit switches, or bad igniters prevent heating equipment from starting." },
-      { title: "Constant Short Cycling", desc: "A heater that turns off after 1-2 minutes often suffers from overheating, clogged air filters, or flame sensor corrosion." }
+      { title: "System Blowing Cold Air in Heat Mode", desc: "Burnt-out heating strips, failed sequencers, or a heat pump reversing valve stuck in cooling mode will blow chilly air inside." },
+      { title: "Unusual Burning Smell or Persistent Rattling", desc: "While minor seasonal dust burn-off is normal upon first startup, persistent burning odors or electrical arcing noises demand immediate service." },
+      { title: "Heater Will Not Turn On or Trip Breaker", desc: "Faulty 24-volt transformers, corroded wiring, or shorted heating elements trip electrical breakers when heating is demanded." },
+      { title: "Constant Auxiliary Heat Running", desc: "When a system runs on expensive auxiliary heat strips continuously instead of using the efficient heat pump compressor, power bills skyrocket." }
     ]
   },
   "furnace-repair": {
@@ -319,20 +319,20 @@ export const SERVICES: Record<string, ServiceInfo> = {
     slug: "heat-pump-service",
     actionWord: "service",
     category: "cooling",
-    tagline: "Expert heat pump repair, heat pump troubleshooting, maintenance, and replacement for year-round comfort.",
-    primaryFocus: "Heat pump troubleshooting, reversing valve replacement, defrost board logic, and auxiliary heat strip repair.",
+    tagline: "Specialized heat pump repair, reversing valve diagnostics, and seasonal heating/cooling maintenance across Central Florida.",
+    primaryFocus: "Dual-mode operation testing, reversing valve solenoid replacement, defrost control board logic, refrigerant charge balancing, and auxiliary heat strip troubleshooting.",
     sidebarPromise: "Contact AHS Heating & Air for expert heat pump diagnostics, reversing valve service, and year-round energy efficiency.",
     processSteps: [
-      { title: "Heat Pump Troubleshooting & Dual-Mode Testing", desc: "We perform heat pump troubleshooting, testing reversing valve operation, defrost control board logic, and auxiliary heat strip engagement." },
-      { title: "Refrigerant & Coil Analysis", desc: "We check subcooling/superheat in both heating and cooling modes and clean variable-speed coils." },
-      { title: "Component Calibration", desc: "We calibrate outdoor ambient sensors, expansion valves, and blower speed settings." },
-      { title: "System Performance Verification", desc: "We measure heating and cooling air drop/rise to confirm peak COP (Coefficient of Performance)." }
+      { title: "Dual-Mode Heating & Cooling Evaluation", desc: "We test reversing valve switching between heating and cooling cycles, ensuring proper refrigerant flow and temperature split." },
+      { title: "Defrost Control & Sensor Testing", desc: "We verify defrost cycle timing, test outdoor ambient temperature sensors, and check that ice melt functions activate correctly." },
+      { title: "Refrigerant Charge & Coil Inspection", desc: "We measure subcooling and superheat in both operational modes to verify that variable-speed compressors operate at factory specifications." },
+      { title: "Auxiliary Heat & Thermostat Calibration", desc: "We test emergency heat sequencers and calibrate digital thermostat stage settings to avoid unnecessary auxiliary power consumption." }
     ],
     problemTemplates: [
-      { title: "Heat Pump Stuck in Cooling or Heating Mode", desc: "A faulty reversing valve or solenoid coil prevents the heat pump from switching between seasons, requiring heat pump troubleshooting." },
-      { title: "Outdoor Unit Icing Up in Winter", desc: "Defrost control board failure or low refrigerant causes ice build-up on the outdoor coil during cold mornings." },
-      { title: "High Auxiliary Heat Electric Usage", desc: "When heat pumps rely too heavily on heat strips instead of compressor heat, power bills jump dramatically." },
-      { title: "Short Cycling in Mild Weather", desc: "Improper sensor calibration or variable-speed drive faults cause rapid cycling during spring and fall." }
+      { title: "System Stuck in Cooling or Heating Mode", desc: "A stuck reversing valve slider or burnt-out 24-volt solenoid coil prevents heat pumps from switching between summer cooling and winter warmth." },
+      { title: "Outdoor Condenser Icing Over in Winter", desc: "Defective defrost control boards, failed ambient sensors, or low refrigerant allow thick frost and ice to blanket outdoor coils on cold mornings." },
+      { title: "Excessive Electric Bills from Aux Heat", desc: "If the auxiliary heat strips engage continuously instead of relying on the efficient heat pump compressor, heating bills can double or triple." },
+      { title: "Rapid Short-Cycling in Transitional Weather", desc: "Miscalibrated thermistors, expansion valve faults, or restricted return airflow cause units to start and stop frequently during mild seasons." }
     ]
   },
   "hvac-maintenance": {
@@ -340,20 +340,20 @@ export const SERVICES: Record<string, ServiceInfo> = {
     slug: "hvac-maintenance",
     actionWord: "tune up",
     category: "general",
-    tagline: "Seasonal AC maintenance, AC tune-ups, and HVAC preventive maintenance for lower energy bills and fewer repairs.",
-    primaryFocus: "Seasonal AC maintenance, thorough AC tune-up services, HVAC preventive maintenance, coil cleaning, and drain flushing.",
+    tagline: "Comprehensive 24-point seasonal AC tune-ups and preventative care designed to stop breakdowns before they happen.",
+    primaryFocus: "Pre-season system inspections, precision electrical testing, outdoor coil washing, algaecide condensate drain flushing, and airflow optimization.",
     sidebarPromise: "Contact AHS Heating & Air for comprehensive multi-point AC tune-ups, algaecide drain flushing, and seasonal preventative care.",
     processSteps: [
-      { title: "AC Tune-Up & Multi-Point Inspection", desc: "We perform a complete AC tune-up, testing capacitors, contactors, fan motors, wiring connections, coils, drain lines, and air filters." },
-      { title: "Deep Cleaning & Seasonal AC Maintenance", desc: "We flush condensate lines with algaecide treatment, wash outdoor coil fins, and clear electrical cabinets as part of seasonal AC maintenance." },
-      { title: "Electrical & Mechanical Calibration", desc: "We measure motor amp draws, check capacitor microfarad ratings, and tighten electrical lugs during HVAC preventive maintenance." },
-      { title: "Detailed System Health Report", desc: "We provide a clear summary of system health, identifying minor wear items before they turn into costly summer breakdowns." }
+      { title: "24-Point Mechanical & Electrical Inspection", desc: "We test capacitor microfarad ratings against manufacturer tolerances, inspect contactor points for pitting, and check motor run amperages." },
+      { title: "Outdoor Condenser Coil Cleaning", desc: "We rinse heavy Florida pollen, dirt, and sand out of condenser fins to restore maximum heat transfer and reduce compressor strain." },
+      { title: "Algaecide Condensate Drain Flush", desc: "We clear primary drain lines, treat drain pans with EPA-approved algaecide tablets, and verify float switch safety shut-offs." },
+      { title: "Comprehensive System Performance Audit", desc: "We measure supply/return air temperature split, inspect duct static pressure, and deliver a transparent health report on your equipment." }
     ],
     problemTemplates: [
-      { title: "Sudden Summer Breakdown Prevention", desc: "90% of emergency summer AC failures stem from neglected maintenance like dirty coils or weak capacitors." },
-      { title: "Gradual Loss of Cooling Power", desc: "Dust-covered evaporator coils reduce heat transfer efficiency, forcing the unit to run 30% longer without regular AC tune-ups." },
-      { title: "Clogged Drain Line Spills", desc: "Algae growth in Florida drain lines causes costly ceiling and floor water damage if not regularly flushed during HVAC preventive maintenance." },
-      { title: "Premature Equipment Failure", desc: "Seasonal AC maintenance extends average HVAC lifespan from 8-10 years to 14+ years in Florida conditions." }
+      { title: "Preventing Unexpected Summer Breakdowns", desc: "Over 85% of mid-summer cooling failures stem from weak capacitors, dirty coils, or clogged drain lines that could have been caught during a tune-up." },
+      { title: "Restoring Lost Efficiency & Airflow", desc: "Dirty evaporator and condenser coils force cooling systems to run 20–30% longer to achieve the same temperature, driving up electric bills." },
+      { title: "Protecting Against Drain Pan Overflows", desc: "Florida's intense humidity produces gallons of water daily; unmaintained drain lines breed algae slime that causes ceiling and flooring water damage." },
+      { title: "Extending Equipment Operating Lifespan", desc: "Regular seasonal maintenance prevents premature compressor burnout, helping Florida systems last 12–15 years rather than failing at 8–10 years." }
     ]
   },
   "thermostat-service": {
@@ -404,35 +404,60 @@ export function getContent(areaSlug: string, serviceSlug: string) {
   const loc = LOCATIONS[areaSlug] || LOCATIONS["belleview"];
   const srv = SERVICES[serviceSlug] || SERVICES["ac-repair"];
 
-  const title = `${srv.name} in ${loc.name}, FL | AHS Heating & Air`;
-  const metaDescription = `Need expert ${srv.name.toLowerCase()} in ${loc.name}, FL? AHS Heating & Air provides fast ${srv.name.toLowerCase()}, diagnostic troubleshooting, and local HVAC solutions near ${loc.landmarks.split(',')[0]}. Call ${SITE_CONFIG.activeDisplayPhone}.`;
+  const primaryLandmark = loc.landmarks.split(',')[0].trim();
+  const title = `${srv.name} in ${loc.name}, FL | AHS, LLC.`;
 
-  // Deeply localized intro paragraph 1 referencing landmarks and exact home construction
-  const introParagraph1 = `When you need reliable ${srv.name.toLowerCase()} in ${loc.name}, Florida, having a trustworthy local HVAC contractor makes all the difference. ${loc.environment} Homeowners residing near ${loc.landmarks} often experience unique heating and cooling demands due to local microclimates. Whether your home is a ${loc.homeTypes.toLowerCase()}, maintaining precise indoor temperature and humidity control is critical throughout the year in ${loc.county}.`;
+  let metaDescription = "";
+  if (serviceSlug === "ac-repair") {
+    metaDescription = `Is your air conditioner blowing warm air or struggling to cool in ${loc.name}, FL? Contact AHS, LLC. for AC troubleshooting and repair near ${primaryLandmark}.`;
+  } else if (serviceSlug === "ac-installation") {
+    metaDescription = `Planning an AC replacement or central air installation in ${loc.name}, FL? AHS, LLC. provides custom SEER2 sizing, heat pump options, and upfront pricing.`;
+  } else if (serviceSlug === "heat-pump-service") {
+    metaDescription = `Heat pump stuck in cooling mode or icing up in ${loc.name}, FL? AHS, LLC. specializes in reversing valve diagnostics and dual-mode heating/cooling care.`;
+  } else if (serviceSlug === "hvac-maintenance") {
+    metaDescription = `Prevent summer cooling breakdowns in ${loc.name}, FL. Contact AHS, LLC. for 24-point seasonal AC tune-ups, coil cleaning, and algaecide drain flushing.`;
+  } else if (serviceSlug === "furnace-repair") {
+    metaDescription = `Furnace not heating or clicking off in ${loc.name}, FL? Contact AHS, LLC. for safe gas and electric furnace troubleshooting, igniters, and safety checks.`;
+  } else if (serviceSlug === "furnace-installation") {
+    metaDescription = `Looking for reliable furnace replacement in ${loc.name}, FL? AHS, LLC. sizes and installs high-efficiency gas and electric heating equipment.`;
+  } else if (serviceSlug === "thermostat-service") {
+    metaDescription = `Need smart thermostat replacement or C-wire wiring in ${loc.name}, FL? AHS, LLC. installs and configures digital thermostats for precise temperature control.`;
+  } else if (serviceSlug === "indoor-air-quality") {
+    metaDescription = `Reduce indoor humidity and airborne allergens in ${loc.name}, FL. AHS, LLC. installs whole-home dehumidifiers, UV purifiers, and high-efficiency filtration.`;
+  } else {
+    metaDescription = `Looking for dependable ${srv.name.toLowerCase()} in ${loc.name}, FL? Contact AHS, LLC. for honest diagnostic troubleshooting and upfront options near ${primaryLandmark}.`;
+  }
 
-  // Deeply localized intro paragraph 2 addressing specific service focus and technical expertise
-  const introParagraph2 = `AHS Heating & Air brings over 28 years of hands-on Florida HVAC expertise directly to your doorstep in ${loc.name} (serving zip codes ${loc.zipCodes.join(", ")}). Our licensed technicians specialize in ${srv.primaryFocus.toLowerCase()} We do not rely on high-pressure sales tactics or generic template diagnoses; instead, we perform thorough system testing, explain our findings in clear language, and deliver clean, long-lasting ${srv.actionWord} solutions that keep your home comfortable in every season.`;
+  // Natural, grammatically sound localized introduction
+  const introParagraph1 = `When your heating or cooling system runs into trouble in ${loc.name}, Florida, having a dependable, experienced contractor makes all the difference. ${loc.environment} For residents living near ${loc.landmarks}, whether in ${loc.homeTypes.toLowerCase().replace(/\.$/, "")}, maintaining dependable indoor comfort and humidity control is essential throughout the year in ${loc.county}.`;
 
-  const localInfoTitle = `${srv.name} Tailored for ${loc.name} Microclimates & Architecture`;
-  const localInfoText = `Properties across ${loc.name} encounter distinct environmental pressures that impact HVAC longevity, including ${loc.climateFactors.toLowerCase()} Our team designs our ${srv.name.toLowerCase()} procedures to specifically overcome these regional challenges.`;
+  // Transparent diagnostic approach with verified license and technician integrity
+  const introParagraph2 = `AHS Heating & Air brings over 28 years of hands-on Florida trade experience directly to your neighborhood in ${loc.name} (serving zip codes ${loc.zipCodes.join(", ")}). Our state-licensed technicians (CAC1817865) focus on ${srv.primaryFocus.toLowerCase().replace(/\.$/, "")}. We believe in honest diagnostics: we test your equipment thoroughly with calibrated meters, explain what broke in plain language, and present straightforward repair options before performing any work—never pressuring you into unnecessary replacements.`;
+
+  const localInfoTitle = `${srv.name} Considerations for ${loc.name} Homes`;
+  const localInfoText = `Properties across ${loc.name} encounter persistent regional conditions that impact HVAC efficiency and equipment lifespan, including ${loc.climateFactors.toLowerCase().replace(/\.$/, "")}. Our service procedures are tailored to inspect and protect against these specific wear factors.`;
 
   const challengesList = loc.commonHVACChallenges.map(challenge => ({
     title: challenge,
-    desc: `Our specialized ${srv.name.toLowerCase()} protocol in ${loc.name} directly addresses ${challenge.toLowerCase()}, protecting your compressor, heat exchanger, and indoor air quality against local environmental wear.`
+    desc: `During our ${srv.name.toLowerCase()} service in ${loc.name}, our technicians carefully check for ${challenge.toLowerCase()}, protecting your compressor, fan motors, and electrical controls from premature Florida climate wear.`
   }));
 
   const faqs = [
     {
-      q: `How quickly can AHS Heating & Air arrive for ${srv.name.toLowerCase()} in ${loc.name}?`,
-      a: `We provide rapid local dispatch to all neighborhoods in ${loc.name}, including properties near ${loc.landmarks}. Because our service vans are stationed throughout Marion County with full diagnostic tools and truck-stocked OEM parts, we strive to resolve urgent ${srv.name.toLowerCase()} requests promptly.`
+      q: `How quickly can AHS Heating & Air respond for ${srv.name.toLowerCase()} in ${loc.name}?`,
+      a: `We provide responsive local dispatch across ${loc.name} and surrounding Marion County neighborhoods, including properties near ${loc.landmarks}. Our service trucks carry diagnostic tools and universal OEM parts—such as dual-run capacitors, contactors, and fan motors—allowing us to resolve most urgent cooling and heating calls on the initial visit.`
     },
     {
-      q: `Why do homes in ${loc.name} frequently experience ${srv.name.toLowerCase()} issues?`,
-      a: `Homes in ${loc.name} face persistent environmental challenges such as ${loc.climateFactors.toLowerCase()} These conditions accelerate wear on electrical components, freeze coils, clog condensate lines, and strain heat pump reversing valves. Regular professional ${srv.name.toLowerCase()} prevents minor issues from causing major system breakdowns.`
+      q: `How do your technicians diagnose why my system needs ${srv.name.toLowerCase()}?`,
+      a: `Rather than guessing or pushing costly replacements, our licensed technicians follow a systematic diagnostic process. We test electrical capacitors and contactors, measure compressor operating amperage, evaluate refrigerant pressures (superheat and subcooling), and check air handler airflow and drain lines to identify the exact root problem.`
     },
     {
-      q: `Are your technicians licensed and familiar with ${loc.name} building codes and home styles?`,
-      a: `Yes! AHS Heating & Air is a state-licensed, bonded, and insured Florida HVAC contractor (CAC1817865) with over 28 years of experience. We are intimately familiar with ${loc.name}'s specific home styles—from ${loc.homeTypes.toLowerCase()}—ensuring every installation, repair, and maintenance job adheres strictly to Marion County code standards.`
+      q: `How do I know whether to repair my system or invest in a new installation?`,
+      a: `If your system is under 10 years old and has experienced a routine electrical or mechanical failure (such as a bad capacitor, motor, or contactor), a targeted repair is almost always the smart choice. If your unit is over 10–12 years old, uses phased-out R-22 refrigerant, or faces a major compressor burnout, our technician will provide an honest comparison of repair costs versus the energy savings of a modern SEER2 replacement.`
+    },
+    {
+      q: `Is AHS Heating & Air licensed and insured to work in ${loc.name}?`,
+      a: `Yes. AHS Heating & Air is a fully state-certified Florida HVAC contractor (License #CAC1817865), bonded, and insured. With more than 28 years serving Ocala and Marion County, all our repairs, replacements, and maintenance services adhere strictly to Florida Building Code standards.`
     }
   ];
 

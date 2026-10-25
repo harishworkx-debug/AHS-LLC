@@ -481,7 +481,7 @@ function Header() {
       <div className="top-strip">
         <div className="container">
           <span>
-            <MapPin size={13} /> Serving Ocala and nearby communities
+            <ShieldCheck size={13} /> FL Certified HVAC Contractor #CAC1817865 · Ocala, FL
           </span>
           <span className="strip-phone">
             <Phone size={13} />
@@ -668,8 +668,8 @@ function ImageShowcase({
 }
 function Home() {
   setMeta(
-    "AHS Heating & Air | Top HVAC Contractor in Ocala, FL",
-    `AHS Heating & Air is a licensed HVAC contractor in Ocala, FL providing emergency AC repair, furnace repair, heat pump service & HVAC maintenance. Call ${PHONE}.`
+    "HVAC Company in Ocala, FL | AHS, LLC.",
+    "Looking for heating and air conditioning service in Ocala, FL? Contact AHS, LLC. for HVAC repair, AC installation, maintenance and indoor comfort solutions."
   );
   return (
     <div>
@@ -1204,8 +1204,8 @@ function Home() {
 }
 function Services() {
   setMeta(
-    "Heating & HVAC Services | AHS, LLC. Ocala",
-    "Explore heating, furnace, AC, heat pump, maintenance, thermostat, and indoor air quality services from AHS, LLC. in Ocala, FL."
+    "Heating & HVAC Services in Ocala, FL | AHS, LLC.",
+    "Explore AC repair, air conditioning installation, heating repair, heat pump service, HVAC maintenance and indoor air quality services in Ocala, FL."
   );
   return (
     <>
@@ -1332,28 +1332,71 @@ function Detail({ slug }: { slug: string }) {
   const ocalaData = getOcalaServiceContent(srvSlug);
   const srv = ocalaData.srv;
 
-  let metaTitle = ocalaData.title;
-  let metaDesc = ocalaData.metaDescription;
+  const serviceMetaMap: Record<string, { title: string; desc: string }> = {
+    "ac-repair-ocala": {
+      title: "AC Repair in Ocala, FL | AHS, LLC.",
+      desc: "Is your air conditioner blowing warm air or struggling to cool your home? Contact AHS, LLC. for AC troubleshooting and repair in Ocala, FL.",
+    },
+    "ac-installation-ocala": {
+      title: "AC Installation Ocala FL | Air Conditioner Replacement | AHS Heating & Air",
+      desc: `Precision AC installation in Ocala, FL. AHS Heating & Air specializes in central air installation and air conditioner replacement custom-sized for high SEER2 efficiency. Call ${PHONE}.`,
+    },
+    "hvac-repair-ocala": {
+      title: "HVAC Repair Ocala FL | Heating and Cooling Repair | AHS Heating & Air",
+      desc: `Reliable HVAC repair in Ocala, FL. AHS Heating & Air provides complete heating and cooling repair, diagnostic troubleshooting, and residential HVAC service. Call ${PHONE}.`,
+    },
+    "heating-repair-ocala": {
+      title: "Heating Repair Ocala FL | Heating System Repair | AHS Heating & Air",
+      desc: `Fast heating repair in Ocala, FL. When winter cold fronts arrive, AHS Heating & Air provides prompt home heating repair and heat pump heating service. Call ${PHONE}.`,
+    },
+    "furnace-repair-ocala": {
+      title: "Furnace Repair Ocala FL | Furnace Troubleshooting | AHS Heating & Air",
+      desc: `Certified furnace repair in Ocala, FL. Is your furnace not heating or cycling off? AHS Heating & Air provides safe gas & electric furnace troubleshooting and repair. Call ${PHONE}.`,
+    },
+    "furnace-installation-ocala": {
+      title: "Furnace Installation Ocala FL | Furnace Replacement | AHS Heating & Air",
+      desc: `Professional furnace installation in Ocala, FL. AHS Heating & Air provides high-efficiency gas and electric furnace replacement and precise heating capacity sizing. Call ${PHONE}.`,
+    },
+    "heat-pump-service-ocala": {
+      title: "Heat Pump Service Ocala FL | Heat Pump Repair & Maintenance | AHS Heating & Air",
+      desc: `Specialized heat pump service in Ocala, FL. AHS Heating & Air handles heat pump repair, reversing valve troubleshooting, and dual-mode heating/cooling maintenance. Call ${PHONE}.`,
+    },
+    "hvac-maintenance-ocala": {
+      title: "HVAC Maintenance Ocala FL | AC Tune-Up & Maintenance | AHS Heating & Air",
+      desc: `Preventive HVAC maintenance in Ocala, FL. Seasonal AC tune-ups, coil cleaning, and drain flushing from AHS Heating & Air to keep your system efficient and reliable. Call ${PHONE}.`,
+    },
+    "thermostat-service-ocala": {
+      title: "Thermostat Repair Ocala FL | Smart Thermostat Installation | AHS Heating & Air",
+      desc: `Expert thermostat repair in Ocala, FL. AHS Heating & Air provides smart thermostat installation, C-wire troubleshooting, and thermostat replacement for precise control. Call ${PHONE}.`,
+    },
+    "indoor-air-quality-ocala": {
+      title: "Indoor Air Quality Ocala FL | Whole-House Filtration | AHS Heating & Air",
+      desc: `Improve your indoor air quality in Ocala, FL. AHS Heating & Air installs whole-house air filtration, UV purifiers, and indoor humidity control solutions. Call ${PHONE}.`,
+    },
+  };
 
-  if (slug === "ac-repair-ocala") {
-    metaTitle = "AC Repair & Emergency AC Repair in Ocala, FL | AHS Heating & Air";
-    metaDesc = `Need AC repair or emergency AC repair in Ocala, FL? AHS Heating & Air fixes frozen coils, leaking refrigerant & cooling failures fast. Call ${PHONE}.`;
-  } else if (slug === "heat-pump-service-ocala") {
-    metaTitle = "Heat Pump Repair & Service in Ocala, FL | AHS Heating & Air";
-    metaDesc = `Top-rated heat pump repair & service in Ocala, FL. AHS Heating & Air fixes reversing valves, defrost controls & heating coils. Call ${PHONE}.`;
-  } else if (slug === "hvac-repair-ocala") {
-    metaTitle = "HVAC Repair & Service in Ocala, FL | AHS Heating & Air";
-    metaDesc = `Reliable HVAC repair in Ocala, FL. AHS Heating & Air fixes AC units, furnaces & heat pumps. Call ${PHONE} for prompt diagnostic service.`;
-  } else if (slug === "ac-installation-ocala") {
-    metaTitle = "AC Installation & Replacement in Ocala, FL | AHS Heating & Air";
-    metaDesc = `High-efficiency AC installation & system replacement in Ocala, FL. Custom sizing, SEER2 energy savings & quiet cooling. Call ${PHONE}.`;
-  } else if (slug === "furnace-repair-ocala") {
-    metaTitle = "Furnace Repair in Ocala, FL | AHS Heating & Air";
-    metaDesc = `Trusted gas & electric furnace repair in Ocala, FL. AHS Heating & Air fixes ignition issues, flame sensors & blower motors. Call ${PHONE}.`;
-  } else if (slug === "hvac-maintenance-ocala") {
-    metaTitle = "HVAC Maintenance & Tune-Up in Ocala, FL | AHS Heating & Air";
-    metaDesc = `Preventative HVAC maintenance & AC tune-ups in Ocala, FL. Clean coils, flush drain lines & optimize efficiency with AHS Heating & Air. Call ${PHONE}.`;
-  }
+  const acFaqs = [
+    {
+      q: "Why is my AC running but not cooling?",
+      a: "When an outdoor AC runs continuously but blows warm air, common causes include a failed dual-run capacitor, seized fan motor, dirty evaporator coils, or low refrigerant from a lineset leak. Our technician tests each electrical and refrigeration component to locate the exact cause.",
+    },
+    {
+      q: "What should I check before requesting AC repair?",
+      a: "Before scheduling service, verify that your thermostat is set to 'Cool' with the fan on 'Auto', check that your circuit breakers haven't tripped, and ensure your indoor air filter isn't completely choked with dust. If these look normal, professional diagnostic service is required.",
+    },
+    {
+      q: "How do I know whether to repair or replace my system?",
+      a: "If your system is under 10 years old and has a minor mechanical issue (such as a capacitor, contactor, or motor failure), repair is the recommended route. If your unit is over 10–12 years old, uses phased-out R-22, or faces major compressor failure, we provide an honest side-by-side cost and efficiency comparison.",
+    },
+    {
+      q: "What affects the cost of AC repair in Ocala?",
+      a: "Repair costs depend on the specific component that failed, whether refrigerant leak repair is required, and the age of the system. AHS, LLC. provides upfront, flat-rate pricing before any repair work begins so there are never surprises.",
+    },
+    {
+      q: "Which areas does AHS, LLC. serve?",
+      a: "We serve Ocala and surrounding Marion County communities, including Silver Springs Shores, Belleview, Summerfield, The Villages, Marion Oaks, Dunnellon, Anthony, Reddick, Citra, and Ocala Estates.",
+    },
+  ];
 
   setMeta(metaTitle, metaDesc, [
     ocalaData.serviceSchema,
@@ -1372,21 +1415,31 @@ function Detail({ slug }: { slug: string }) {
         <div className="container detail-grid">
           <article>
             <span className="eyebrow">Service overview</span>
-            <h2>{name} Solutions for Ocala Homeowners</h2>
-            <p>
-              When your heating or cooling system is not performing properly in Marion County,
-              you need straight answers and dependable workmanship. At AHS Heating &amp; Air,
-              our Florida-licensed technicians (CAC1817865) bring over 28 years of trusted experience
-              to {name.toLowerCase()} in Ocala and surrounding communities.
-            </p>
-            <p>
-              {srv.primaryFocus} We do not rely on aggressive sales tactics or generic template diagnoses.
-              Instead, we test system components thoroughly, explain our findings in clear language,
-              and deliver long-lasting comfort solutions tailored to your home.
+            <h2>{name} in Ocala, FL</h2>
+            <p className="lead-text" style={{ fontSize: "1.08rem", lineHeight: "1.75", marginBottom: "24px" }}>
+              {slug === "ac-repair-ocala"
+                ? "When your air conditioner isn't cooling your home properly, you need to understand what's wrong and what it will take to fix it. AHS, LLC. provides air conditioning and HVAC services in the Ocala area. Contact the team to discuss your system's symptoms and arrange the appropriate diagnostic service."
+                : `When your ${name.toLowerCase()} system is not performing properly in Marion County, you need straight answers and dependable workmanship. AHS, LLC. provides licensed heating and air conditioning services in the Ocala area. Contact our team to discuss your system's symptoms and arrange the appropriate diagnostic service.`}
             </p>
 
-            <h3>What to Expect During Your {name} Service</h3>
-            <div className="process-grid" style={{ marginTop: "16px", marginBottom: "32px" }}>
+            <h2>Common {name.includes("AC") ? "Air Conditioning" : name} Problems We Diagnose</h2>
+            <p style={{ marginBottom: "16px" }}>
+              Here are typical symptoms homeowners encounter. In an HVAC system, a single symptom can stem from multiple possible causes—our technicians test each component methodically to identify the exact fault:
+            </p>
+            <ul className="check-list" style={{ marginBottom: "36px" }}>
+              {srv.problemTemplates.map((p, idx) => (
+                <li key={idx}>
+                  <Check />
+                  <span><strong>{p.title}:</strong> {p.desc}</span>
+                </li>
+              ))}
+            </ul>
+
+            <h2>Our {name} Troubleshooting &amp; Repair Process</h2>
+            <p style={{ marginBottom: "16px" }}>
+              We follow a transparent diagnostic and repair workflow to protect your comfort, safety, and equipment longevity:
+            </p>
+            <div className="process-grid" style={{ marginBottom: "36px" }}>
               {srv.processSteps.map((step, idx) => (
                 <div className="process-card" key={idx}>
                   <span>0{idx + 1}</span>
@@ -1396,15 +1449,50 @@ function Detail({ slug }: { slug: string }) {
               ))}
             </div>
 
-            <h3>Common Warning Signs &amp; Symptoms</h3>
-            <ul className="check-list">
-              {srv.problemTemplates.map((p, idx) => (
-                <li key={idx}>
-                  <Check />
-                  <span><strong>{p.title}:</strong> {p.desc}</span>
-                </li>
+            <h2>Repair or Replace Your {name.includes("AC") || name.includes("Air") ? "Air Conditioner" : "System"}?</h2>
+            <p style={{ marginBottom: "16px" }}>
+              Deciding whether to repair an existing system or replace it involves weighing practical factors rather than relying on arbitrary rules:
+            </p>
+            <div className="values-grid" style={{ marginBottom: "36px" }}>
+              <div>
+                <ShieldCheck />
+                <h3>Equipment Age &amp; Condition</h3>
+                <p>Florida AC systems run thousands of hours annually. A well-maintained unit under 10 years old with an isolated component failure is almost always worth repairing.</p>
+              </div>
+              <div>
+                <Wrench />
+                <h3>Repair Cost vs. Value</h3>
+                <p>If a repair quote approaches 40–50% of the cost of a new system on an aging unit, replacement generally offers better long-term financial sense.</p>
+              </div>
+              <div>
+                <Zap />
+                <h3>SEER2 Energy Efficiency</h3>
+                <p>Modern high-efficiency heat pumps and air conditioners reduce monthly power consumption significantly compared to older 10–12 SEER systems.</p>
+              </div>
+              <div>
+                <Thermometer />
+                <h3>Refrigerant Compatibility</h3>
+                <p>Older units relying on phased-out R-22 Freon face steep repair and refrigerant recharge costs, making modern R-410A equipment a cleaner long-term solution.</p>
+              </div>
+            </div>
+
+            <h2>{name} for Homes in Ocala &amp; Marion County</h2>
+            <p style={{ marginBottom: "28px" }}>
+              AHS, LLC. brings more than 28 years of hands-on Florida HVAC trade experience directly to your neighborhood (State License #CAC1817865). Whether your home is an established ranch in Marion Oaks, a mid-century residence in Belleview, or a newer property near the World Equestrian Center, our service vans carry diagnostic multimeters, pressure gauges, and universal OEM parts—enabling fast, single-visit resolutions for most cooling and heating calls.
+            </p>
+
+            <h2>Frequently Asked Questions</h2>
+            <div className="faq-list" style={{ marginTop: "16px" }}>
+              {acFaqs.map((faq, idx) => (
+                <details key={idx}>
+                  <summary>
+                    {faq.q}
+                    <ChevronDown />
+                  </summary>
+                  <p>{faq.a}</p>
+                </details>
               ))}
-            </ul>
+            </div>
           </article>
           <aside className="side-card">
             <div className="service-icon">
@@ -1707,8 +1795,8 @@ function Area({
 }
 function About() {
   setMeta(
-    "About AHS, LLC. | Ocala Heating Contractor",
-    "Learn about AHS, LLC., a local heating and HVAC contractor serving Ocala, Florida and nearby communities."
+    "HVAC Contractor Ocala FL | About AHS Heating & Air",
+    "Meet AHS Heating & Air, a licensed HVAC contractor in Ocala, FL (#CAC1817865). Learn about our local heating and cooling company backed by more than 28 years of trusted Marion County experience."
   );
   return (
     <>
@@ -1774,8 +1862,8 @@ function About() {
 }
 function Contact() {
   setMeta(
-    "Contact AHS Heating & Air | Ocala HVAC Contractor",
-    `Contact AHS Heating & Air for heating, furnace, AC, and HVAC service in Ocala, Florida. Call ${PHONE}.`
+    "Contact HVAC Company Ocala | AC Repair Phone Number | AHS Heating & Air",
+    `Contact our HVAC company in Ocala, FL. Call our AC repair phone number ${PHONE} for reliable diagnostic help or to schedule your HVAC service appointment.`
   );
   return (
     <>
@@ -1861,8 +1949,8 @@ function Contact() {
 }
 function FAQ() {
   setMeta(
-    "HVAC FAQs | AHS Heating & Air Ocala",
-    "Answers to common questions about heating, AC repair, and HVAC service from AHS Heating & Air in Ocala, FL."
+    "HVAC Questions and Answers | AC Troubleshooting FAQs | AHS Heating & Air",
+    "Clear HVAC questions and answers from AHS Heating & Air in Ocala, FL. Find practical AC troubleshooting advice, HVAC maintenance answers, and heating guidance."
   );
   const qs: [string, React.ReactNode][] = [
     [
@@ -1994,8 +2082,8 @@ function FAQ() {
 }
 function ServiceAreas() {
   setMeta(
-    "HVAC Service Areas | AHS, LLC. Ocala",
-    "Explore AHS, LLC. heating and HVAC service areas around Ocala, Florida."
+    "HVAC Service Areas Near Ocala | Marion County | AHS Heating & Air",
+    "Explore HVAC service areas near Ocala served by AHS Heating & Air. Licensed HVAC contractor in Marion County offering dependable local heating and cooling service."
   );
   return (
     <>
@@ -2068,8 +2156,8 @@ function ServiceAreas() {
 }
 function Reviews() {
   setMeta(
-    "Customer Reviews | AHS, LLC. Ocala",
-    "Read customer-provided Google review excerpts about AHS, LLC. heating and HVAC service in Ocala, Florida."
+    "HVAC Company Reviews Ocala | AC Repair Reviews | AHS Heating & Air",
+    "Read real HVAC company reviews in Ocala, FL. See what homeowners say about AHS Heating & Air, verified AC repair reviews, and 5.0-star heating contractor service."
   );
   return (
     <>
