@@ -1326,9 +1326,13 @@ function PageHero({
   );
 }
 function Detail({ slug }: { slug: string }) {
-  const item = services.find(s => s[0] === slug)!;
+  const normalizedSlug = slug.endsWith("-ocala") ? slug : `${slug}-ocala`;
+  const item = services.find(s => s[0] === normalizedSlug || s[0] === slug);
+  if (!item) {
+    return <NotFound />;
+  }
   const [path, name, desc] = item;
-  const srvSlug = slug.replace("-ocala", "");
+  const srvSlug = normalizedSlug.replace("-ocala", "");
   const ocalaData = getOcalaServiceContent(srvSlug);
   const srv = ocalaData.srv;
 
@@ -1375,31 +1379,44 @@ function Detail({ slug }: { slug: string }) {
     },
   };
 
-  const acFaqs = [
-    {
-      q: "Why is my AC running but not cooling?",
-      a: "When an outdoor AC runs continuously but blows warm air, common causes include a failed dual-run capacitor, seized fan motor, dirty evaporator coils, or low refrigerant from a lineset leak. Our technician tests each electrical and refrigeration component to locate the exact cause.",
-    },
-    {
-      q: "What should I check before requesting AC repair?",
-      a: "Before scheduling service, verify that your thermostat is set to 'Cool' with the fan on 'Auto', check that your circuit breakers haven't tripped, and ensure your indoor air filter isn't completely choked with dust. If these look normal, professional diagnostic service is required.",
-    },
-    {
-      q: "How do I know whether to repair or replace my system?",
-      a: "If your system is under 10 years old and has a minor mechanical issue (such as a capacitor, contactor, or motor failure), repair is the recommended route. If your unit is over 10–12 years old, uses phased-out R-22, or faces major compressor failure, we provide an honest side-by-side cost and efficiency comparison.",
-    },
-    {
-      q: "What affects the cost of AC repair in Ocala?",
-      a: "Repair costs depend on the specific component that failed, whether refrigerant leak repair is required, and the age of the system. AHS, LLC. provides upfront, flat-rate pricing before any repair work begins so there are never surprises.",
-    },
-    {
-      q: "Which areas does AHS, LLC. serve?",
-      a: "We serve Ocala and surrounding Marion County communities, including Silver Springs Shores, Belleview, Summerfield, The Villages, Marion Oaks, Dunnellon, Anthony, Reddick, Citra, and Ocala Estates.",
-    },
-  ];
+  const metaTitle =
+    serviceMetaMap[normalizedSlug]?.title ||
+    ocalaData?.title ||
+    `${name} in Ocala, FL | AHS Heating & Air`;
+  const metaDesc =
+    serviceMetaMap[normalizedSlug]?.desc ||
+    ocalaData?.metaDescription ||
+    desc;
+
+  const faqs =
+    normalizedSlug === "ac-repair-ocala"
+      ? [
+          {
+            q: "Why is my AC running but not cooling?",
+            a: "When an outdoor AC runs continuously but blows warm air, common causes include a failed dual-run capacitor, seized fan motor, dirty evaporator coils, or low refrigerant from a lineset leak. Our technician tests each electrical and refrigeration component to locate the exact cause.",
+          },
+          {
+            q: "What should I check before requesting AC repair?",
+            a: "Before scheduling service, verify that your thermostat is set to 'Cool' with the fan on 'Auto', check that your circuit breakers haven't tripped, and ensure your indoor air filter isn't completely choked with dust. If these look normal, professional diagnostic service is required.",
+          },
+          {
+            q: "How do I know whether to repair or replace my system?",
+            a: "If your system is under 10 years old and has a minor mechanical issue (such as a capacitor, contactor, or motor failure), repair is the recommended route. If your unit is over 10–12 years old, uses phased-out R-22, or faces major compressor failure, we provide an honest side-by-side cost and efficiency comparison.",
+          },
+          {
+            q: "What affects the cost of AC repair in Ocala?",
+            a: "Repair costs depend on the specific component that failed, whether refrigerant leak repair is required, and the age of the system. AHS, LLC. provides upfront, flat-rate pricing before any repair work begins so there are never surprises.",
+          },
+          {
+            q: "Which areas does AHS, LLC. serve?",
+            a: "We serve Ocala and surrounding Marion County communities, including Silver Springs Shores, Belleview, Summerfield, The Villages, Marion Oaks, Dunnellon, Anthony, Reddick, Citra, and Ocala Estates.",
+          },
+        ]
+      : ocalaData.faqs;
 
   setMeta(metaTitle, metaDesc, [
     ocalaData.serviceSchema,
+    ocalaData.faqSchema,
     ocalaData.breadcrumbSchema,
   ]);
 
@@ -1483,7 +1500,7 @@ function Detail({ slug }: { slug: string }) {
 
             <h2>Frequently Asked Questions</h2>
             <div className="faq-list" style={{ marginTop: "16px" }}>
-              {acFaqs.map((faq, idx) => (
+              {faqs.map((faq, idx) => (
                 <details key={idx}>
                   <summary>
                     {faq.q}
@@ -2254,6 +2271,27 @@ function Router() {
             component={() => <Detail slug={slug} />}
           />
         ))}
+        {services.map(([slug]) => (
+          <Route
+            key={`short-${slug}`}
+            path={`/${slug.replace("-ocala", "")}`}
+            component={() => <Detail slug={slug} />}
+          />
+        ))}
+        {services.map(([slug]) => (
+          <Route
+            key={`services-${slug}`}
+            path={`/services/${slug}`}
+            component={() => <Detail slug={slug} />}
+          />
+        ))}
+        {services.map(([slug]) => (
+          <Route
+            key={`services-short-${slug}`}
+            path={`/services/${slug.replace("-ocala", "")}`}
+            component={() => <Detail slug={slug} />}
+          />
+        ))}
         {areas.flatMap(a =>
           services.map(([slug, sName]) => (
             <Route
@@ -2269,6 +2307,20 @@ function Router() {
             />
           ))
         )}
+        {areas.map(a => (
+          <Route
+            key={`area-${a}`}
+            path={`/${a}`}
+            component={() => <Area area={a} />}
+          />
+        ))}
+        {areas.map(a => (
+          <Route
+            key={`service-area-${a}`}
+            path={`/service-areas/${a}`}
+            component={() => <Area area={a} />}
+          />
+        ))}
         <Route component={NotFound} />
       </Switch>
     </Layout>

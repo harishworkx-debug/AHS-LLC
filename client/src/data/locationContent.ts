@@ -602,11 +602,49 @@ export function getOcalaServiceContent(serviceSlug: string) {
     ]
   };
 
+  const faqs = [
+    {
+      q: `How quickly can AHS Heating & Air respond for ${srv.name.toLowerCase()} in Ocala?`,
+      a: `We provide fast local dispatch across Ocala and surrounding Marion County neighborhoods. Our service trucks are stocked with diagnostic equipment and common OEM replacement parts—such as dual-run capacitors, contactors, and motors—allowing us to resolve most urgent issues on the initial visit.`
+    },
+    {
+      q: `How do your technicians diagnose why my system needs ${srv.name.toLowerCase()}?`,
+      a: `Rather than guessing or pushing unnecessary replacements, our licensed technicians follow a systematic diagnostic process. We test electrical components, measure operating amp draw, evaluate pressures and temperatures, and inspect airflow to pinpoint the exact root problem.`
+    },
+    {
+      q: `How do I know whether to repair my system or invest in a new installation?`,
+      a: `If your system is under 10 years old and has an isolated mechanical or electrical failure, repair is usually recommended. If your unit is over 10–12 years old, uses phased-out R-22 Freon, or requires major compressor work, we provide an honest, transparent comparison between repair and modern high-efficiency SEER2 replacement.`
+    },
+    {
+      q: `What affects the cost of ${srv.name.toLowerCase()} in Ocala, FL?`,
+      a: `Costs depend on the specific component involved, necessary diagnostic time, and required parts. AHS Heating & Air provides clear, upfront pricing before any work begins so there are never surprises.`
+    },
+    {
+      q: `Is AHS Heating & Air licensed and insured for ${srv.name.toLowerCase()} in Ocala?`,
+      a: `Yes. AHS Heating & Air is a state-certified Florida HVAC contractor (License #CAC1817865) with over 28 years of hands-on experience serving Ocala and Marion County.`
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
+      }
+    }))
+  };
+
   return {
     srv,
     title,
     metaDescription,
+    faqs,
     serviceSchema,
+    faqSchema,
     breadcrumbSchema
   };
 }
