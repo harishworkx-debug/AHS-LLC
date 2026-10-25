@@ -57,7 +57,12 @@ areas.forEach(a => {
   });
 });
 
+// Community / Service Area Landing Pages (10 URLs)
+areas.forEach(a => {
+  addUrl("/" + a, "0.80", "weekly");
+});
+
 xml += `</urlset>\n`;
 
 fs.writeFileSync('client/public/sitemap.xml', xml);
-console.log('Generated sitemap.xml with all 117 canonical URLs successfully!');
+console.log('Generated sitemap.xml with all 127 canonical URLs successfully!');
